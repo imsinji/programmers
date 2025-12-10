@@ -5,6 +5,6 @@ def solution(numbers, target):
         for t in target_list:
             temp_list.append(t + n)
             temp_list.append(t - n)
-        target_list = temp_list.copy()
+        target_list = temp_list
     answer = target_list.count(target)
     return answer
