@@ -27,9 +27,7 @@ def solution(fees, records):
         else:
             dictionary[car_num] = cal
 
-    print(dictionary)
     sorted_dict = dict(sorted(dictionary.items()))
-    print(sorted_dict)
     answer = []
     for v in sorted_dict.values():
         answer.append(get_fee(fees, v))
