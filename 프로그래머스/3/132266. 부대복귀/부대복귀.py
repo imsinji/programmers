@@ -1,36 +1,21 @@
-def make_dict(roads, n):
-    graph = {}
-    for f, t in roads:
-        if f <= n and t <= n:
-            graph.setdefault(f, set()).add(t)
-            graph.setdefault(t, set()).add(f)
-    return graph
-
-def find_road(dictionary, f, t, d):
-    # print('start', f, t, d)
-    if f == t:
-        # print('a', f, t)
-        return d
-    elif f in dictionary:
-        if t in dictionary[f]:
-            d += 1
-            # print('b', f, t, d)
-            return d
-        for v in dictionary[f]:
-            d = find_road(dictionary, v, t, d)
-            if d != -1:
-                # print('c', v, t, d)
-                d += 1
-                return d
-    else:
-        return -1
+from collections import deque
 
 def solution(n, roads, sources, destination):
-    dictionary = make_dict(roads, n)
-    # print(dictionary)
+    graph = [[] for _ in range(n + 1)]
+    for a, b in roads:
+        graph[a].append(b)
+        graph[b].append(a)
+    dist = [-1] * (n + 1)
+
+    queue = deque([destination])
+    dist[destination] = 0
+    while queue:
+        q = queue.popleft()
+        for n in graph[q]:
+            if dist[n] == -1:
+                dist[n] = dist[q] + 1
+                queue.append(n)
     answer = []
     for s in sources:
-        dist = find_road(dictionary, s, destination, 0)
-        answer.append(dist)
-
+        answer.append(dist[s])
     return answer
