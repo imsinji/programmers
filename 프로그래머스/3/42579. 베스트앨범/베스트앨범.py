@@ -19,16 +19,10 @@ def solution(genres, plays):
         else:
             temp_d[i] = p
 
-    temp = sorted(d_genre.items(), key = lambda item: item[1], reverse=True)
-    print(temp)
     answer = []
-    for t in temp:
-        temp = sorted(d_song_by_genre[t[0]].items(), key = lambda item: (item[1], -item[0]), reverse=True)
+    for t in sorted(d_genre.items(), key = lambda item: item[1], reverse=True):
         count = 0
-        for i in temp:
-            if count >= 2:
-                break
+        for i in sorted(d_song_by_genre[t[0]].items(), key = lambda item: (item[1], -item[0]), reverse=True)[:2]:
             answer.append(i[0])
-            count += 1
-            
+
     return answer
