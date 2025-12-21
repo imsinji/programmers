@@ -8,9 +8,7 @@ def operate(a, b):
     rtn = set()
     rtn.add(a+b)
     rtn.add(a-b)
-    rtn.add(b-a)
     rtn.add(a*b)
-    if a != 0: rtn.add(b//a)
     if b != 0: rtn.add(a//b)
     return rtn
 
