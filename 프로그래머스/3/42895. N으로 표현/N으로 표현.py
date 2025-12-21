@@ -1,53 +1,33 @@
-def add(f, N):
-    return f+N
-def minus(f, N):
-    return f-N
-def multiply(f, N):
-    return f*N
-def divide(f, N):
-    return int(f/N) if N != 0 else None
 def duplicate(N, k):
     rtn = 0
     for i in range(k):
         rtn += N*(10**i)
-    # print("!!!!", rtn)
     return rtn
-def operate(f, N, k):
-    rtn = []
-    rtn.append(add(f,N))
-    rtn.append(minus(f,N))
-    rtn.append(minus(N,f))
-    rtn.append(multiply(f,N))
-    rtn.append(divide(f,N))
-    if f != 0:
-        rtn.append(divide(N,f))
-    rtn.append(duplicate(N,k))
-    return rtn
-    
-def solve(N, k):
-    # print(N, k)
-    if k < 2:
-        return []
 
-    if k == 2:
-        # print(operate(N, N, k))
-        return set(operate(N, N, k))
-    else:
-        v = solve(N, k-1)
-        # v.append(duplicate(N, k-1))
-        # print("!!!", v)
-        rtn = []
-        for target in v:
-            rtn.extend(operate(target, N, k))
-        # print(rtn)
-        return set(rtn)
+def operate(a, b):
+    rtn = set()
+    rtn.add(a+b)
+    rtn.add(a-b)
+    rtn.add(b-a)
+    rtn.add(a*b)
+    if a != 0: rtn.add(b//a)
+    if b != 0: rtn.add(a//b)
+    return rtn
 
 def solution(N, number):
-    answer = 2
+    answer = 1
+    dp = [set() if i == 0 else set([duplicate(N,i)]) for i in range(9)]
     while True:
         if answer > 8:
             return -1
-        if number in solve(N, answer):
-            return answer
+        for i in range(answer):
+            if number in dp[answer]:
+                return answer
+            for a in dp[i]:
+                for b in dp[answer-i]:
+                    temp = operate(a,b)
+                    dp[answer].update(temp)
+                    if number in temp:
+                        return answer
         answer += 1
-    return answer
+    return -1
