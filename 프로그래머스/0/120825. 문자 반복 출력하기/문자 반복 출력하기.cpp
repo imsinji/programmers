@@ -6,9 +6,7 @@ using namespace std;
 string solution(string my_string, int n) {
     string answer = "";
     for (auto s: my_string) {
-        for (int i = 0; i < n; ++i) {
-            answer += s;
-        }
+        answer += std::string(n, s);
     }
     return answer;
 }
