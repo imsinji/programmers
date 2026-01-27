@@ -7,11 +7,8 @@ using namespace std;
 
 string solution(string myString) {
     string answer = "";
-    string target = "l";
     for (auto s: myString) {
-        if (int(s) < int(target[0]))
-            answer += target;
-        else answer += s;
+        answer += s < 'l' ? 'l' : s;
     }
     return answer;
 }
