@@ -1,14 +1,14 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <numeric>
 
 using namespace std;
 
 string solution(vector<string> str_list, string ex) {
-    string answer = "";
-    for (auto s: str_list) {
-        if (s.find(ex) == std::string::npos)
-            answer += s;
-    }
-    return answer;
+    return std::accumulate(
+        str_list.cbegin(), str_list.cend(), string(""),
+        [ex](string a, string b) { 
+            return b.find(ex) == std::string::npos ? (a+b) : a; }  
+    );
 }
