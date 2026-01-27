@@ -9,8 +9,7 @@ int main(void) {
     cin >> str;
     string temp;
     for (auto s: str) {
-        temp += isupper(s) ? tolower(s) : toupper(s);
+        cout << (char)(isupper(s) ? tolower(s) : toupper(s));
     }
-    cout << temp;
     return 0;
 }
