@@ -1,12 +1,10 @@
 #include <string>
 #include <vector>
-#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
 int solution(string myString, string pat) {
-    for (auto& s: myString) {
-        s = s == 'A' ? 'B' : 'A'; 
-    }
+    std::transform(myString.cbegin(), myString.cend(), myString.begin(), [](char _){ return _ == 'A' ? 'B' : 'A'; });
     return myString.find(pat) == std::string::npos ? 0 : 1;
 }
