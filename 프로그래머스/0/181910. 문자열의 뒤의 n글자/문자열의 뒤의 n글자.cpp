@@ -5,8 +5,7 @@
 using namespace std;
 
 string solution(string my_string, int n) {
-    string answer = "";
-    std::copy(my_string.cend()-n, my_string.cend(), std::back_inserter(answer));
+    string answer = my_string.substr(my_string.size() - n);
     cout << answer << endl;
     return answer;
 }
