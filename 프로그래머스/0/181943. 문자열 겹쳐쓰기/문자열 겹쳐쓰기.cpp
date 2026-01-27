@@ -4,8 +4,9 @@
 using namespace std;
 
 string solution(string my_string, string overwrite_string, int s) {
-    string answer = my_string.substr(0,s);
-    answer += overwrite_string;
-    answer += my_string.substr(answer.size(), my_string.size() - answer.size());
+    string answer = my_string;
+    for (size_t i = 0; i < overwrite_string.size(); ++i) {
+        answer[i+s] = overwrite_string[i];
+    }
     return answer;
 }
