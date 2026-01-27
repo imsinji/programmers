@@ -3,16 +3,9 @@
 
 using namespace std;
 
-int gcd(int aa, int bb) {
-    int a = max(aa, bb);
-    int b = min(aa, bb);
-    int c;
-    while (b != 0) {
-        c = a % b;
-        a = b;
-        b = c;
-    }
-    return a;
+int gcd(int a,int b){
+    if(b==0) return a;
+    return gcd(b,a%b);
 }
 
 int solution(int n) {
