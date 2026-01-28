@@ -8,9 +8,10 @@ vector<string> solution(string my_string) {
     string temp;
     for (auto s: my_string) {
         if (s == ' ') {
-            if (temp != "")
+            if (temp != "") {
                 answer.push_back(temp);
-            temp = "";
+                temp = "";
+            }
         } else {
             temp += s;
         }
