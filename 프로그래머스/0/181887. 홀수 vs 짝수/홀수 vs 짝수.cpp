@@ -4,13 +4,13 @@
 using namespace std;
 
 int solution(vector<int> num_list) {
-    int sum1 = 0;
-    int sum2 = 0;
-    for (size_t i = 0; i < num_list.size(); i+=2) {
-        sum1 += num_list[i];
+    int sum_even = 0;
+    int sum_odd = 0;
+    for (size_t i = 0; i < num_list.size(); i++) {
+        if (i & 1)
+            sum_odd += num_list[i];
+        else
+            sum_even += num_list[i];
     }
-    for (size_t i = 1; i < num_list.size(); i+=2) {
-        sum2 += num_list[i];
-    }
-    return max(sum1, sum2);
+    return max(sum_even, sum_odd);
 }
