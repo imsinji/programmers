@@ -4,6 +4,7 @@
 using namespace std;
 
 vector<string> solution(string my_string) {
+    my_string.append(" ");
     vector<string> answer;
     string temp;
     for (auto s: my_string) {
@@ -16,7 +17,5 @@ vector<string> solution(string my_string) {
             temp += s;
         }
     }
-    if (temp != "")
-        answer.push_back(temp);
     return answer;
 }
