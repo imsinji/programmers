@@ -3,7 +3,7 @@
 #include <cmath>
 
 using namespace std;
-#define MAX_VAL 999999
+const int MAX_VAL = 999999;
 vector<int> solution(vector<int> arr, vector<vector<int>> queries) {
     vector<int> answer;
     for (auto q: queries) {
