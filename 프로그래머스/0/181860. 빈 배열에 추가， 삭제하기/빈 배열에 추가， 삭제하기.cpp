@@ -13,7 +13,7 @@ vector<int> solution(vector<int> arr, vector<bool> flag) {
             vector<int> temp(arr[i]*2, arr[i]);
             copy(temp.cbegin(), temp.cend(), std::back_inserter(answer));
         } else {
-            answer = vector<int>(answer.cbegin(), answer.cend()-arr[i]);
+            answer.erase(answer.end()-arr[i], answer.end());
         }
     }
     return answer;
