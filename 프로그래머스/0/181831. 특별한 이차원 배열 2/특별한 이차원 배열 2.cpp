@@ -5,12 +5,11 @@
 using namespace std;
 
 int solution(vector<vector<int>> arr) {
-    bool check = true;
     for (int i = 0; i < arr.size(); i++) {
-        for (int j = 0; j < arr[i].size(); j++) {
+        for (int j = 0; j < i; j++) {
             if (arr[i][j] != arr[j][i])
-                check = false;
+                return 0;
         }
     }
-    return check;
+    return 1;
 }
