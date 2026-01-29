@@ -9,7 +9,7 @@ vector<string> solution(vector<string> str_list) {
         if (str_list[i] == "l") {
             answer = vector<string>(str_list.cbegin(), str_list.cbegin()+i);
             break;
-        } else if (str_list[i] == "r" && i < (str_list.size()-1)) {
+        } else if (str_list[i] == "r") {
             answer = vector<string>(str_list.cbegin()+i+1, str_list.cend());
             break;
         }
