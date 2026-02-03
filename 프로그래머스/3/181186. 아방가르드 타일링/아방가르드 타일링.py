@@ -1,24 +1,13 @@
-def dp(n):
-    if n == 0:
-        return 0
-    elif n == 1:
-        return 1
-    elif n == 2:
-        return 3
-    elif n%3 == 0:
-        return 10 ** int(n/3)
-    else:
-        return dp(n-1) * 2 - 1
-        # k = int(n/3)
-        # r = n%3
-        # if r == 1:
-        #     return 2*dp(k*3)
-        # elif r == 2:
-        #     cal = 2*dp(k*3)
-        #     cal *= dp(2)*dp(k*3)
-        #     return cal
-        # else:
-        #     return dp(k*3)
+MOD = 1_000_000_007
 
 def solution(n):
-    return dp(n)%1000000007
+    dp = [0, 1, 3, 10, 23, 62, 170]
+    
+    if n < 7:
+        return dp[n]
+    
+    for i in range(7, n+1):
+        x = (dp[-1] + 2 * dp[-2] + 6 * dp[-3] + dp[-4] - dp[-6]) % MOD
+        dp = dp[1:] + [x]
+
+    return dp[-1]
